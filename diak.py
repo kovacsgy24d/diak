@@ -1,4 +1,3 @@
-# 1. Fájl beolvasása
 fajl = open("diak.txt", "r", encoding="utf-8")
 diakok = []
 
@@ -11,7 +10,7 @@ fajl.close()
 
 print("Diákok száma:", len(diakok))
 
-# 2. Legmagasabb diák keresése
+# 2. Legmagasabb diák 
 legmag = 0
 legnev = ""
 for diak in diakok:
