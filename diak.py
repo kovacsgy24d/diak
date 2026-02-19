@@ -1,25 +1,19 @@
-fajl=open("diak.txt","r",encoding="utf-8")
-
-diakok=[]
+fajl = open("diak.txt", "r", encoding="utf-8")
+diakok = []
 
 for sor in fajl:
-    sor=sor.strip()
-    adat=sor.split(";")
-    nev=adat[0]
-    mag=int(adat[1])
-    diakok.append([nev,mag])
+    sor = sor.strip()
+    nev, mag = sor.split(";")
+    diakok.append([nev, int(mag)])
 
 fajl.close()
 
-
-
 print("Diákok száma:", len(diakok))
 
+# 2. Legmagasabb diák 
 
-# legmagasabb diák
-legnev=diakok[0][0]
-legmag=diakok[0][1]
-
+legmag = 0
+legnev = ""
 for diak in diakok:
     if diak[1] > legmag:
         legmag = diak[1]
@@ -27,4 +21,16 @@ for diak in diakok:
 
 print("Legmagasabb:", legnev, "-", legmag, "cm")
 
+# 3. Rendezés csökkenő sorrendben 
 
+diakok.sort(key=lambda x: x[1], reverse=True)
+
+print("Tornasor:")
+for diak in diakok:
+    print(diak[0], diak[1])
+
+
+fajl = open("rendezve.txt", "w", encoding="utf-8")
+for diak in diakok:
+    fajl.write(diak[0] + " " + str(diak[1]) + "\n")
+fajl.close()
